@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coral AI</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #00bcd4;
+        }
+
+        #chat-display {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        p:nth-child(odd) {
+            background-color: #444;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        p:nth-child(even) {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #chat-form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #user-input {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #00bcd4;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #00bcd4;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #009688;
+        }
+    </style>
+</head>
+<body>
+    <h1>Coral Reefe AI</h1>
+    <div id="chat-display"></div>
+    <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button type="button" onclick="sendMessage()">Send</button>
+    </form>
+
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("user-input").value;
+            var chatDisplay = document.getElementById("chat-display");
+
+            // Append user message to chat display
+            chatDisplay.innerHTML += "<p>You: " + userInput + "</p>";
+
+            // Clear the input field
+            document.getElementById("user-input").value = "";
+
+            // Simulate typing by adding a delay before displaying the bot response
+            setTimeout(function () {
+                // Display "typing" indicator
+                chatDisplay.innerHTML += "<p>Coral AI is typing...</p>";
+
+                // Send user message to server and get response
+                fetch("/get_response", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: "user_input=" + encodeURIComponent(userInput)
+                })
+                .then(response => response.text())
+                .then(response => {
+                    // Remove "typing" indicator
+                    chatDisplay.lastChild.remove();
+
+                    // Append bot response to chat display
+                    chatDisplay.innerHTML += "<p>Coral AI: " + response + "</p>";
+                });
+            }, 2000); // You can adjust the delay time (in milliseconds) as needed
+        }
+    </script>
+</body>
+</html>
