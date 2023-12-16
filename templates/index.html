@@ -7,25 +7,40 @@
     <title>Coral AI</title>
     <style>
         body {
-            background-color: #333;
+            background-color: rgba(0, 0, 0, 0.7); /* Faded black background color */
             color: #fff;
             font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             text-align: center;
         }
 
-        h1 {
+        nav {
+            background-color: #333;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h1 {
             color: #00bcd4;
+            margin: 0;
+            text-align: left;
+            margin: 10px;
         }
 
         #chat-display {
-            margin-top: 20px;
-            text-align: left;
+            margin-top: 85px;
+            text-align: center;
+            padding: 10px;
+            height: 60vh; /* Set the height of the chat display to make it scrollable */
+            overflow-y: auto; /* Enable vertical scrolling */
         }
 
         p {
-            margin: 10px 0;
+            margin: 0;
         }
 
         p:nth-child(odd) {
@@ -41,22 +56,29 @@
         }
 
         #chat-form {
+            position: fixed; /* Fixed position for the input bar and button */
+            bottom: 0; /* Align to the bottom of the viewport */
+            width: 100%;
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            align-items: center;
+            padding: 10px;
+            background-color: #333; /* Background color for the input bar and button */
         }
 
         #user-input {
-            padding: 10px;
-            margin-right: 10px;
+            padding: 15px;
+            width: 60%;
             border: 1px solid #00bcd4;
             border-radius: 5px;
             background-color: #444;
             color: #fff;
+            margin-right: 10px;
         }
 
         button {
-            padding: 10px;
+            padding: 15px;
+            width: 12%;
             border: none;
             border-radius: 5px;
             background-color: #00bcd4;
@@ -70,7 +92,10 @@
     </style>
 </head>
 <body>
-    <h1>Coral Reefe AI</h1>
+    <nav>
+        <h1>Coral Reefs AI</h1>
+    </nav>
+
     <div id="chat-display"></div>
     <form id="chat-form">
         <input type="text" id="user-input" placeholder="Type your message...">

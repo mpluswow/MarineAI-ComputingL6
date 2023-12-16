@@ -14,27 +14,29 @@
     <setting file="file://$PROJECT_DIR$/app.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2ZZ4x5HODsfDenmhCVdp4ooCMh5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/WebServer/htdocs/marineai&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.app.executor": "Run",
+    "Python.fuzz.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/ai_dev",
+    "run.code.analysis.last.selected.profile": "aDefault"
   }
-}</component>
+}]]></component>
   <component name="QodanaReportsService">
     <option name="descriptions">
-      <ReportDescription localRun="true" path="C:\Users\Administrator\AppData\Local\Temp\1\qodana_output\qodana.sarif.json" reportGuid="d0a71a54-5ef3-4b65-9483-426bf8597cd2" reportId="marineai/qodana/2023-12-14" />
+      <ReportDescription localRun="true" path="C:\Users\Administrator\AppData\Local\Temp\1\qodana_output\qodana.sarif.json" reportGuid="1edf05c7-1497-41c9-9442-c112321bea31" reportId="app.py/qodana/2023-12-15" />
     </option>
   </component>
   <component name="SharedIndexes">
