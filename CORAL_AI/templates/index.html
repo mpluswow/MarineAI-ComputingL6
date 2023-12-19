@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character set, compatibility, and viewport settings -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title of the web page -->
     <title>Coral AI</title>
+
+    <!-- Styles to define the appearance of the webpage -->
     <style>
+        /* Styling for the body of the webpage */
         body {
             background-color: rgba(0, 0, 0, 0.7); /* Faded black background color */
             color: #fff;
@@ -15,6 +21,7 @@
             text-align: center;
         }
 
+        /* Styles for the navigation bar */
         nav {
             background-color: #333;
             padding: 10px;
@@ -24,6 +31,7 @@
             z-index: 1000;
         }
 
+        /* Styles for the heading inside the navigation bar */
         nav h1 {
             color: #00bcd4;
             margin: 0;
@@ -31,6 +39,7 @@
             margin: 10px;
         }
 
+        /* Styles for the chat display area */
         #chat-display {
             margin-top: 85px;
             text-align: center;
@@ -39,10 +48,12 @@
             overflow-y: auto; /* Enable vertical scrolling */
         }
 
+        /* Styles for chat bubbles */
         p {
             margin: 0;
         }
 
+        /* Styles for alternating background colors in chat bubbles */
         p:nth-child(odd) {
             background-color: #444;
             padding: 10px;
@@ -55,6 +66,7 @@
             border-radius: 5px;
         }
 
+        /* Styles for the chat input form */
         #chat-form {
             position: fixed; /* Fixed position for the input bar and button */
             bottom: 0; /* Align to the bottom of the viewport */
@@ -66,6 +78,7 @@
             background-color: #333; /* Background color for the input bar and button */
         }
 
+        /* Styles for the user input field */
         #user-input {
             padding: 15px;
             width: 60%;
@@ -76,6 +89,7 @@
             margin-right: 10px;
         }
 
+        /* Styles for the send button */
         button {
             padding: 15px;
             width: 12%;
@@ -86,31 +100,41 @@
             cursor: pointer;
         }
 
+        /* Styles for the send button when hovered */
         button:hover {
             background-color: #009688;
         }
     </style>
 </head>
 <body>
+    <!-- Navigation bar with the heading -->
     <nav>
         <h1>Coral Reefs AI</h1>
     </nav>
 
+    <!-- Container for the chat display -->
     <div id="chat-display"></div>
+
+    <!-- Form for user input with text field and send button -->
     <form id="chat-form">
         <input type="text" id="user-input" placeholder="Type your message...">
         <button type="button" onclick="sendMessage()">Send</button>
     </form>
 
+    <!-- JavaScript code for sending and displaying messages -->
     <script>
+        // Function to handle sending messages
         function sendMessage() {
+            // Get user input from the text field
             var userInput = document.getElementById("user-input").value;
+
+            // Get the chat display element
             var chatDisplay = document.getElementById("chat-display");
 
-            // Append user message to chat display
+            // Append the user message to the chat display
             chatDisplay.innerHTML += "<p>You: " + userInput + "</p>";
 
-            // Clear the input field
+            // Clear the input field after sending the message
             document.getElementById("user-input").value = "";
 
             // Simulate typing by adding a delay before displaying the bot response
@@ -118,7 +142,7 @@
                 // Display "typing" indicator
                 chatDisplay.innerHTML += "<p>Coral AI is typing...</p>";
 
-                // Send user message to server and get response
+                // Send the user message to the server and get the response
                 fetch("/get_response", {
                     method: "POST",
                     headers: {
@@ -128,10 +152,10 @@
                 })
                 .then(response => response.text())
                 .then(response => {
-                    // Remove "typing" indicator
+                    // Remove the "typing" indicator
                     chatDisplay.lastChild.remove();
 
-                    // Append bot response to chat display
+                    // Append the bot response to the chat display
                     chatDisplay.innerHTML += "<p>Coral AI: " + response + "</p>";
                 });
             }, 2000); // You can adjust the delay time (in milliseconds) as needed
