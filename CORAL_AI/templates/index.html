@@ -8,103 +8,11 @@
 
     <!-- Title of the web page -->
     <title>Coral AI</title>
+    <link rel="stylesheet" href="/web_data/css/styles.css">
 
-    <!-- Styles to define the appearance of the webpage -->
-    <style>
-        /* Styling for the body of the webpage */
-        body {
-            background-color: rgba(0, 0, 0, 0.7); /* Faded black background color */
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
+    
+    
 
-        /* Styles for the navigation bar */
-        nav {
-            background-color: #333;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        /* Styles for the heading inside the navigation bar */
-        nav h1 {
-            color: #00bcd4;
-            margin: 0;
-            text-align: left;
-            margin: 10px;
-        }
-
-        /* Styles for the chat display area */
-        #chat-display {
-            margin-top: 85px;
-            text-align: center;
-            padding: 10px;
-            height: 60vh; /* Set the height of the chat display to make it scrollable */
-            overflow-y: auto; /* Enable vertical scrolling */
-        }
-
-        /* Styles for chat bubbles */
-        p {
-            margin: 0;
-        }
-
-        /* Styles for alternating background colors in chat bubbles */
-        p:nth-child(odd) {
-            background-color: #444;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        p:nth-child(even) {
-            background-color: #333;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        /* Styles for the chat input form */
-        #chat-form {
-            position: fixed; /* Fixed position for the input bar and button */
-            bottom: 0; /* Align to the bottom of the viewport */
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            background-color: #333; /* Background color for the input bar and button */
-        }
-
-        /* Styles for the user input field */
-        #user-input {
-            padding: 15px;
-            width: 60%;
-            border: 1px solid #00bcd4;
-            border-radius: 5px;
-            background-color: #444;
-            color: #fff;
-            margin-right: 10px;
-        }
-
-        /* Styles for the send button */
-        button {
-            padding: 15px;
-            width: 12%;
-            border: none;
-            border-radius: 5px;
-            background-color: #00bcd4;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        /* Styles for the send button when hovered */
-        button:hover {
-            background-color: #009688;
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation bar with the heading -->
@@ -112,7 +20,7 @@
         <h1>Coral Reefs AI</h1>
     </nav>
 
-    <!-- Container for the chat display -->
+    <!-- Container for the scrollable chat display -->
     <div id="chat-display"></div>
 
     <!-- Form for user input with text field and send button -->
@@ -132,7 +40,7 @@
             var chatDisplay = document.getElementById("chat-display");
 
             // Append the user message to the chat display
-            chatDisplay.innerHTML += "<p>You: " + userInput + "</p>";
+            chatDisplay.innerHTML += "<p class='user-bubble'>You: " + userInput + "</p>";
 
             // Clear the input field after sending the message
             document.getElementById("user-input").value = "";
@@ -140,7 +48,7 @@
             // Simulate typing by adding a delay before displaying the bot response
             setTimeout(function () {
                 // Display "typing" indicator
-                chatDisplay.innerHTML += "<p>Coral AI is typing...</p>";
+                chatDisplay.innerHTML += "<p class='bot-bubble'>Coral AI is typing...</p>";
 
                 // Send the user message to the server and get the response
                 fetch("/get_response", {
@@ -156,7 +64,10 @@
                     chatDisplay.lastChild.remove();
 
                     // Append the bot response to the chat display
-                    chatDisplay.innerHTML += "<p>Coral AI: " + response + "</p>";
+                    chatDisplay.innerHTML += "<p class='bot-bubble'>Coral AI: " + response + "</p>";
+
+                    // Scroll to the bottom of the chat display to show the latest message
+                    chatDisplay.scrollTop = chatDisplay.scrollHeight;
                 });
             }, 2000); // You can adjust the delay time (in milliseconds) as needed
         }

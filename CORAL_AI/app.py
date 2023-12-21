@@ -6,7 +6,10 @@ from fuzzywuzzy import fuzz
 import json
 
 # Create a Flask application
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__, static_url_path='/web_data', static_folder='web_data')
+
+# Set a secret key for CSRF protection
+app.secret_key = ''
 
 # Create a ChatBot instance named 'Coral AI'
 azerothcore_bot = ChatBot('Coral AI')
@@ -16,7 +19,7 @@ trainer = ListTrainer(azerothcore_bot)
 
 # Load existing training data for coral reefs from JSON file
 try:
-    with open('coral_reefs_data.json', 'r') as coral_file:
+    with open('training_data/coral_reefs_data.json', 'r') as coral_file:
         coral_data = json.load(coral_file)
         # Train the chatbot with the loaded data
         for item in coral_data:
@@ -34,7 +37,7 @@ except json.JSONDecodeError as json_error:
 
 # Load existing training data for the team from JSON file
 try:
-    with open('team_data.json', 'r') as team_file:
+    with open('training_data/team_data.json', 'r') as team_file:
         team_data = json.load(team_file)
         # Train the chatbot with the loaded data
         for item in team_data:
@@ -106,13 +109,11 @@ def get_response():
         return jsonify("An error occurred")
 
 # Function to log user interactions to a file
-
 def log_interaction(user_input, bot_responses):
     with open('interaction_log.txt', 'a') as log_file:
         log_file.write(f'[Q] {user_input}\n')
         log_file.write(f'[A] {" ".join(bot_responses)}\n')
 
-
 # Run the Flask application
 if __name__ == "__main__":
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0', port=5000)

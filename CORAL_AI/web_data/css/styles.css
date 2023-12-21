@@ -1,0 +1,122 @@
+/* styles.css */
+
+/* Styling for the body of the webpage */
+body {
+    background-color: rgba(0, 0, 0, 0.7); /* Faded black background color */
+    color: #fff; /* Light text color */
+    font-family: 'Arial', sans-serif; /* Font family for text */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    text-align: center; /* Center-align text */
+}
+
+/* Styles for the navigation bar */
+nav {
+    background-color: #333; /* Dark gray background color */
+    padding: 10px; /* Padding around the navigation bar */
+    position: fixed; /* Fixed position at the top of the viewport */
+    width: 100%; /* Full width of the viewport */
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Set a higher z-index to be on top of other elements */
+}
+
+/* Styles for the heading inside the navigation bar */
+nav h1 {
+    color: #00bcd4; /* Cyan text color */
+    margin: 0; /* Remove margin */
+    text-align: left; /* Align text to the left */
+    margin: 10px; /* Set margin around the heading */
+}
+
+/* Styles for the chat display area */
+#chat-display {
+    margin-top: 95px; /* Margin from the top to avoid overlapping with the navigation bar */
+    text-align: left; /* Align text to the left */
+    padding: 30px; /* Padding around the chat display */
+    max-height: 60vh; /* Set the maximum height of the chat display */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Styles for chat bubbles */
+p {
+    margin: 0; /* Remove margin */
+    word-wrap: break-word; /* Allow long words to break and wrap onto the next line */
+}
+
+/* Styles for alternating background colors in chat bubbles */
+p:nth-child(odd) {
+    background-color: #444; /* Dark gray background color for odd chat bubbles */
+    padding: 10px; /* Padding around chat bubbles */
+    border-radius: 15px; /* Rounded corners for chat bubbles */
+    margin-bottom: 5px; /* Bottom margin for spacing between chat bubbles */
+}
+
+p:nth-child(even) {
+    background-color: #333; /* Darker gray background color for even chat bubbles */
+    padding: 10px; /* Padding around chat bubbles */
+    border-radius: 15px; /* Rounded corners for chat bubbles */
+    margin-bottom: 5px; /* Bottom margin for spacing between chat bubbles */
+}
+
+/* Styles for the chat input form */
+#chat-form {
+    position: fixed; /* Fixed position for the input bar and button */
+    bottom: 0; /* Align to the bottom of the viewport */
+    width: 100%; /* Full width of the viewport */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center-align child elements horizontally */
+    align-items: center; /* Center-align child elements vertically */
+    padding: 10px; /* Padding around the input bar and button */
+    background-color: #333; /* Dark gray background color for the input bar and button */
+}
+
+/* Styles for the user input field */
+#user-input {
+    padding: 15px; /* Padding around the user input field */
+    width: 60%; /* Width of the user input field */
+    border: 1px solid #00bcd4; /* Cyan border */
+    border-radius: 5px; /* Rounded corners for the input field */
+    background-color: #444; /* Dark gray background color for the input field */
+    color: #fff; /* Text color for the input field */
+    margin-right: 10px; /* Right margin for spacing between input field and button */
+}
+
+/* Styles for the send button */
+button {
+    padding: 15px; /* Padding around the button */
+    width: 12%; /* Width of the button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners for the button */
+    background-color: #00bcd4; /* Cyan background color for the button */
+    color: #fff; /* Text color for the button */
+    cursor: pointer; /* Set cursor to pointer on hover */
+}
+
+/* Styles for the send button when hovered */
+button:hover {
+    background-color: #009688; /* Darker cyan background color on hover */
+}
+
+/* Styles for user messages */
+.user-bubble {
+    background-color: #009688; /* Dark cyan background color for user messages */
+}
+
+/* Styles for bot messages */
+.bot-bubble {
+    background-color: #00bcd4; /* Cyan background color for bot messages */
+}
+
+/* Styles for the scrollbar in WebKit browsers */
+#chat-display::-webkit-scrollbar {
+    width: 10px; /* Set width of the scrollbar */
+}
+
+#chat-display::-webkit-scrollbar-thumb {
+    background-color: #00bcd4; /* Cyan color for the scrollbar thumb */
+    border-radius: 5px; /* Rounded corners for the scrollbar thumb */
+}
+
+#chat-display::-webkit-scrollbar-track {
+    background-color: #282c34; /* Dark background color for the scrollbar track */
+}
